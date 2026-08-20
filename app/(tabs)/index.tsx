@@ -1,10 +1,11 @@
-import {View, StyleSheet} from 'react-native';
+import {View, StyleSheet, FlatList, Text} from 'react-native';
+import Filme from './filme';
 
 const categorias = [
   {
     id: "1",
     titulo: "Em Alta",
-    filmes: [
+    filmes= [
       { id: "1a", titulo: "Oppenheimer", cor: "#1a1a2e" },
       { id: "1b", titulo: "Duna 2", cor: "#16213e" },
       { id: "1c", titulo: "Barbie", cor: "#0f3460" },
@@ -55,8 +56,33 @@ const categorias = [
 export default function App() {
     return (
 
-        <View></View>
+        <View> 
+          <FlatList>
+            data={categorias}
+            keyExtractor={{item} => item.id}
+            renderItem ={renderCategoria}
+          </FlatList>
+        </View>
     );
+}
+
+function renderCategoria((item):(item:any)){
+  return(
+    <View>
+      {item.titulo}
+      <FlatList>
+        data={filmes}
+        keyExtractor={{item} => filme.id}
+        horizontal={true}
+        renderItem= {filme}
+      </FlatList>
+    </View>
+  )
+}
+function filme((item):(item:any)){
+  <View>
+  {{item} => <Text style={nomeFilme}>{item.nome}</Text>}
+</View>
 }
 
 const styles = StyleSheet.create({
