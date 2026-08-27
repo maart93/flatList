@@ -1,4 +1,5 @@
 import {View, StyleSheet, FlatList, Text, Image} from 'react-native';
+import { Link } from 'expo-router';
 import Filme from './filme';
 
 const categorias = [
@@ -56,39 +57,41 @@ const categorias = [
 export default function App() {
     return (
 
-        <View> 
-          <FlatList>
+      <View style={styles.container}> 
+          <FlatList
             data={categorias}
-            keyExtractor={{item} => item.id}
+            keyExtractor={(item) => item.id}
             renderItem ={renderCategoria}
-          </FlatList>
+          />
         </View>
     );
 }
 
-function renderCategoria ((item):(item:any)){
+function renderCategoria({item}:{item:any}){
   return(
     <View>
-      {item.titulo}
-      <FlatList>
+     <Text>{item.titulo}</Text>
+      <FlatList
         data={item.filmes}
-        keyExtractor={{item} => filmes.id}
+        keyExtractor={(item) => item.id}
         horizontal={true}
-        renderItem= {filme}
-      </FlatList>
+        renderItem= {renderfilme}
+      />
     </View>
-  )
+  );
 }
-function filme ((item):(item:any)){
+function renderfilme({item}:{item:any}){
   return(
     <View>
-      <Text style={nomeFilme}>{item.titulo}</Text>
+      <Link href="/filme">
       <Image
         source={{uri:item.image}}
         style={[styles.imagem]}
       />
+      <Text style={styles.nomeFilme}>{item.titulo}</Text>
+      </Link>
     </View>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
@@ -99,5 +102,8 @@ const styles = StyleSheet.create({
     width: 150,
     height: 200,
     margin: 10
+  },
+  container:{
+    flex: 1
   },
 });
