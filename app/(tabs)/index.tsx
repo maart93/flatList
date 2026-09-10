@@ -1,6 +1,6 @@
 import {View, StyleSheet, FlatList, Text, Image} from 'react-native';
 import { Link } from 'expo-router';
-import Filme from '../filme';
+import Filme from '../componentes/filme/[id]';
 import DadosFilmes from '../componentes/DadosFilmes';
 import renderCategoria  from '../componentes/CardeCategoria';
 

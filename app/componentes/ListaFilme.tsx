@@ -1,7 +1,9 @@
 import {View, StyleSheet, FlatList, Text, Image} from 'react-native';
 import { Link } from 'expo-router';
 import DadosFilmes from './DadosFilmes';
-import Filme from '../filme';
+
+
+
 
 const categorias=DadosFilmes();
 
@@ -9,7 +11,7 @@ const categorias=DadosFilmes();
 export default function renderfilme({item}:{item:any}){
     return(
       <View>
-        <Link href="/filme">
+        <Link href={`/componentes/filme/${item.id}`}>
         <Image
           source={{uri:item.image}}
           style={[styles.imagem]}
